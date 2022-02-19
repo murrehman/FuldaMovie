@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:13
+    container_name: msc-postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./Db/postgres_dataDir:/var/lib/postgresql/data
+      - ./Db/1_Users.sql:/docker-entrypoint-initdb.d/1_Users.sql
+      - ./Db/2_Schema.sql:/docker-entrypoint-initdb.d/2_Schema.sql
+      - ./Db/3_Test_Data.sql:/docker-entrypoint-initdb.d/3_Test_Data.sql
+    ports: 
+      - 5432:5432
+    env_file:
+      .env
+      
+  keycloak:
+    image: quay.io/keycloak/keycloak:12.0.1
+    container_name: msc-keycloak
+    restart: always
+    volumes: 
+      - ./keycloak/realms/realm-export.json:/tmp/fuldaMovie-realm-export.json
+      # ENABLE THIS MOUNTING POINT ONLY FOR THEME EDITING
+      # IT CAN SIGNIFICANTLY AFFECTS PERFORMANCE
+      # - ./keycloak/configuration/standalone.xml:/opt/jboss/keycloak/standalone/configuration/standalone.xml
+      # - ./keycloak/configuration/standalone-ha.xml:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml
+      - ./keycloak/themes/fuldaMovie:/opt/jboss/keycloak/themes/fuldaMovie
+      - ./keycloak/keycloak_dataDir:/var/lib/keycloak/data
+    ports:
+      - 9990:8080
+    env_file:
+      .env
+
+  backend:
+    build: ./backend/
+    container_name: msc-backend
+    restart: always
+    ports: 
+      - 3000:3000
+    environment: 
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/msc?currentSchema=content
+      - MSC_APP_COLDSTART=false
+  
+  frontend:
+    build: ./Front-End App/
+    container_name: msc-frontend
+    ports: 
+      - 4200:4200
+    
+  
+
+
+

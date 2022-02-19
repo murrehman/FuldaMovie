@@ -1,0 +1,269 @@
+    <!-- Hero Section Begin -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__slider owl-carousel">
+                 <div *ngFor="let i of nowPlayingMovies" class="hero__items set-bg" attr.data-setbg="{{siteImageUrl + i.posterPath}}" routerLink="/index/detail/{{i.id}}" style="cursor: pointer;">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">{{i.status}} {{i.releaseDate | date:'M/d/yy'}}</div>
+                                <h2>{{i.title}}</h2>
+                                <p>{{i.overview.substring(0,200)}}</p>
+                                <a routerLink="/index/detail/{{i.id}}"><span>Detail</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--  
+                <div class="hero__items set-bg" data-setbg="assets/theme/img/hero/hero-1.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
+                                <p>After 30 days of travel across the world...</p>
+                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                 <div class="hero__items set-bg" data-setbg="assets/theme/img/hero/hero-1.jpg">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="hero__text">
+                                <div class="label">Adventure</div>
+                                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
+                                <p>After 30 days of travel across the world...</p>
+                                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Product Section Begin -->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="trending__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Trending Now</h4>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let t of trendingMovies">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" attr.data-setbg="{{siteImageUrl + t.posterPath}}" routerLink="/index/detail/{{t.id}}" style="cursor: pointer;">
+                                        <div class="ep">Populatiry: {{t.popularity}}</div>
+                                        <div class="comment">Duration: {{t.runtime}}</div>
+                                        <div class="view"><i class="fa fa-eye"></i> {{t.voteCount}}</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{t.status}}</li>
+                                            <li>{{t.contentType}}</li>
+                                        </ul>
+                                        <h5><a routerLink="/index/detail/{{t.id}}">{{t.title}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="popular__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Popular Shows</h4>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let t of popularMovies">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" attr.data-setbg="{{siteImageUrl + t.posterPath}}" routerLink="/index/detail/{{t.id}}" style="cursor: pointer;">
+                                        <div class="ep">Populatiry: {{t.popularity}}</div>
+                                        <div class="comment">Duration: {{t.runtime}}</div>
+                                        <div class="view"><i class="fa fa-eye"></i> {{t.voteCount}}</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{t.status}}</li>
+                                            <li>{{t.contentType}}</li>
+                                        </ul>
+                                        <h5><a routerLink="/index/detail/{{t.id}}">{{t.title}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="recent__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Upcoming Movies</h4>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let t of upcomingMovies">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" attr.data-setbg="{{siteImageUrl + t.posterPath}}" routerLink="/index/detail/{{t.id}}" style="cursor: pointer;">
+                                        <div class="ep">Populatiry: {{t.popularity}}</div>
+                                        <div class="comment">Duration: {{t.runtime}}</div>
+                                        <div class="view"><i class="fa fa-eye"></i> {{t.voteCount}}</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{t.status}}</li>
+                                            <li>{{t.contentType}}</li>
+                                        </ul>
+                                        <h5><a routerLink="/index/detail/{{t.id}}">{{t.title}}</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="live__product">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8 col-sm-8">
+                                <div class="section-title">
+                                    <h4>Live Action</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="#" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-1.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Shouwa Genroku Rakugo Shinjuu</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-2.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Mushishi Zoku Shou 2nd Season</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-3.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-4.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-5.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Fate/stay night Movie: Heaven's Feel - II. Lost</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="assets/theme/img/live/live-6.jpg">
+                                        <div class="ep">18 / 18</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>Active</li>
+                                            <li>Movie</li>
+                                        </ul>
+                                        <h5><a href="#">Kizumonogatari II: Nekketsu-hen</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+<app-most-waited-movies></app-most-waited-movies>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Section End -->

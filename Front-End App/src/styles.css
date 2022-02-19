@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .header__logo img {max-width: 63%;}
+  }

@@ -1,0 +1,24 @@
+<div class="header__nav" *ngIf="userProfile">
+  <nav class="header__menu mobile-menu">
+    <ul>
+      <li>
+        <div class="username">
+          <span class="icon_profile_red"></span> {{userProfile.username}} <span class="arrow_carrot-down"></span>
+        </div>
+        <ul class="dropdown">
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<div class="header__nav" *ngIf="!userProfile">
+  <nav class="header__menu mobile-menu">
+    <ul>
+      <li><a href="/login"><span class="icon_profile"></span> Login</a></li>
+    </ul>
+  </nav>
+</div>
+
+
