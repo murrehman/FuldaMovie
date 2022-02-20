@@ -1,3 +1,8 @@
+# Building Web and Mobile Apps
+
+Group project - BWAMA
+
+
 # Project Idea :calendar: :vhs:
 
 - Movies/Series Calendar
