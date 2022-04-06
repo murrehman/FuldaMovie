@@ -29,44 +29,37 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     //Getting Movies for Slider
-    this._movies.getNowPlayingMovies().subscribe(data=> {
-      this.nowPlayingMovies = data.slice(0,5);      
+    this._movies.getNowPlayingMovies().subscribe(data => {
+      this.nowPlayingMovies = data.slice(0, 5);
       console.log(this.nowPlayingMovies);
 
-       setTimeout(() => {
+      setTimeout(() => {
         InitializeJqueryCodeInMainJS(true);
-       }, 10);    
-    
+      }, 10);
+
 
     });
 
 
     //Getting Trending Movies
-    this._movies.getTrendingMovies().subscribe(data=> {
-      this.trendingMovies = data.slice(0,6);
+    this._movies.getTrendingMovies().subscribe(data => {
+      this.trendingMovies = data.slice(0, 6);
     });
 
     //Getting Popular Movies
-    this._movies.getMostPopularMovies("1").subscribe(data=> {
-      this.popularMovies = data.slice(0,6);
+    this._movies.getMostPopularMovies("1").subscribe(data => {
+      this.popularMovies = data.slice(0, 6);
     });
 
 
-       //Getting Upcoming Movies
-       this._movies.getUpcomingMovies().subscribe(data=> {
-        this.upcomingMovies = data.slice(0,6);
-      });
-
-
-    
-  
-
-
+    //Getting Upcoming Movies
+    this._movies.getUpcomingMovies().subscribe(data => {
+      this.upcomingMovies = data.slice(0, 6);
+    });
   }
 
-  
-  ngAfterViewChecked()
-  {
+
+  ngAfterViewChecked() {
 
   }
 
